@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+
+<script>
+    let local = localStorage;
+
+    local.student = {
+        id:1,
+        username:'小黑',
+        age:18,
+    }
+    console.log(typeof local.student)
+    console.log(local.student)
+
+    // 存储对象数据需要序列化
+    let student2 = {
+        id:2,
+        username: '小黄',
+        age:23
+    }
+    local.stu = JSON.stringify(student2);
+    console.log(typeof local.stu);
+    console.log(local.stu)
+
+    // 反序列化取值
+    let stu2 = JSON.parse(local.stu)
+    console.log(stu2.age)
+    localStorage.clear()
+</script>
+</body>
+</html>

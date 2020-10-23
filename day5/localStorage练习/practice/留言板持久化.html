@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+    <input type="text" v-model="msg">
+    <button @click="add_note">添加留言</button>
+    <ul>
+        <li v-for="(u,i) in msg_list" :key="i">
+            {{u}} <a href="javascript:;" @click="del(i)">删除</a>
+        </li>
+    </ul>
+    <input v-show="count" type="button" value="删除所有" @click="del_all()">
+</div>
+
+<script src="../js/vue.min.js"></script>
+<script>
+    new Vue({
+        el: "#app",
+        data: {
+            msg:'',
+            msg_list: localStorage.msgs? JSON.parse(localStorage.msgs):[],
+            count: '',
+        },
+        methods: {
+
+            add_note(){
+                if (this.msg){
+                    this.msg_list.unshift(this.msg);
+                    this.msg = ''
+                    localStorage.msgs = JSON.stringify(this.msg_list)
+                    this.s()
+                }
+            },
+            // 单个删除
+            del(i) {
+                this.msg_list.splice(i,1)
+                localStorage.msgs = JSON.stringify(this.msg_list)
+                this.s()
+            },
+            // 多个删除
+            del_all(){
+                this.msg_list = []
+                localStorage.clear()
+                this.s()
+            },
+            // 删除所有按钮更新显示或隐藏
+            s(){
+                if (this.msg_list.length == 0){
+                    console.log(111);
+                    this.count = false
+                } else {
+                    console.log(222);
+                    this.count = true
+                }
+            }
+        },
+        beforeMount(){
+                this.s()
+            }
+    })
+
+
+</script>
+</body>
+</html>

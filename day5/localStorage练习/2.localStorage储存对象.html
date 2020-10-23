@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+
+<script>
+    let local = localStorage;
+    // 存储对象
+
+    local.student = {
+        id:1,
+        username: 'xxx',
+        age:18,
+
+    }
+    console.log(typeof local.student)
+    console.log(local.student)
+
+    let student2 = {
+        id:2,
+        username: '小黄',
+        age:23,
+    }
+    // 储存对象的数据需要序列化
+    local.stu = JSON.stringify(student2)
+
+    // let stu2 = local.stu
+    // console.log(typeof stu2)
+    // console.log(stu2)
+
+    let stu2 = JSON.parse(local.stu)
+    console.log(stu2.age);
+
+
+</script>
+
+</body>
+</html>

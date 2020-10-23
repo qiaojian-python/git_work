@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+
+<script>
+// localStorage是以key-value的形式将数据存储的
+//     localStorage.name = '百知教育'
+//     console.log(localStorage.name)
+    // 删除数据
+    // localStorage.removeItem('name')
+    // localStorage数据的存储方式 与访问方式
+    localStorage.age = 12
+    localStorage['bir'] = '2020-1-1'
+    localStorage.setItem('pwd','123456')
+    // console.log(localStorage.age)
+    // console.log(localStorage['bir'])
+    // console.log(localStorage.getItem('pwd'))
+
+    // 遍历数据
+    for (let n=0;n<localStorage.length; n++){
+        console.log('第'+(n+1)+'条数据的key为'+localStorage.key(n)+',值为'+
+        localStorage[localStorage.key(n)])
+    }
+
+    // 删除所有
+    // localStorage.clear()
+
+    // sessionStorage.name = '小白'
+
+</script>
+</body>
+</html>
