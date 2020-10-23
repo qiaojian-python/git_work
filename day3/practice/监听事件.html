@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+<!-- 多个变量依赖于一个属性变化 -->
+
+    <p @click="clickMe">{{num}}</p>
+    <p>十位:{{shi}}</p>
+    <p>个位:{{ge}}</p>
+
+</div>
+
+<script src="../js/vue.min.js"></script>
+<script>
+    new Vue({
+        el: "#app",
+        data: {
+            num: 99,
+            shi: '',
+            ge: ''
+        },
+        methods: {
+            clickMe(){
+                this.num -=2
+            }
+        },
+        watch:{
+        //    必须是data中已经存在的变量的变化
+            // 不需要返回值
+            num(){
+                this.shi = parseInt(this.num / 10)
+                this.ge = this.num % 10;
+            }
+        }
+    })
+
+
+</script>
+</body>
+</html>

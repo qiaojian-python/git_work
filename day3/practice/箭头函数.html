@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+
+
+</div>
+
+<script src="../js/vue.min.js"></script>
+<script>
+    // 箭头函数练习
+    //正常函数
+    function add(a,b) {
+        console.log(a + b)
+    }
+    add(2,3)
+
+    // 匿名函数
+    let app = function (a ,b ,c) {
+        console.log(a + b*c)
+    }
+    app(3,4,5)
+
+
+    // 箭头函数其实就是对于匿名函数写法的简化
+    let app2 = (a,b,c) => console.log(a+b-c)
+    app2(2,3,4)
+
+    // 函数体有两条语句时不能省略{}
+    let app3 = (a,b) =>{
+        console.log(a,11);
+        console.log(b,22);
+    }
+    app3(4,5)
+
+    // 无参数要写()
+    let app4 = () =>console.log(123);
+    app4()
+
+    // 在回调函数中使用箭头函数不会改变原有的指向
+    // 定义一个user对象
+    let user = {
+        username: '小白',
+        app:function () {
+            // 当前this指向当前的user实例
+            console.log(this);
+        }
+    }
+    // user.app()
+
+
+    let student = {
+        username: '小小',
+        app:function () {
+            console.log(this,11);
+            // 回调函数
+            setTimeout(function () {
+                console.log(this,222);
+            })
+        }
+    }
+    student.app()
+
+    // 在回调函数中使用箭头函数
+    let emp = {
+        username:'小天',
+        app: function () {
+            setTimeout(()=>{
+                console.log(this,333);
+            })
+        }
+    }
+    emp.app()
+    new Vue({
+        el: "#app",
+        data: {}
+    })
+
+
+</script>
+</body>
+</html>

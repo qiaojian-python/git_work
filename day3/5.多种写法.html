@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+
+<script>
+
+    let app =(x,y) => console.log(x*y)
+
+    app(2,3)
+
+    //参数只有一个 省略()
+    let app2 = x => console.log(x)
+    app2(4)
+
+    // 如果函数体中只有一条语句且是return 语句， 可以省略 return
+    let app3 = (x,y) => x+y;
+
+    console.log(app3(2, 3));
+
+    let app4 = a => a+5;
+    console.log(app4(2));
+//    函数没有参数 则()不能省略
+    let app5 = () => console.log(123)
+    app5()
+</script>
+
+</body>
+</html>

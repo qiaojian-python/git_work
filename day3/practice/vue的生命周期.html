@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+
+    <span id="span">文本</span>
+
+    <h3 @click="change" id="sp">{{number}}</h3>
+
+</div>
+
+<script src="../js/vue.min.js"></script>
+<script>
+    new Vue({
+        el: "#app",
+        data: {
+            number: 50,
+        },
+        methods: {
+            change(){
+                this.number--;
+            },
+        },
+        
+    //    第一个hook 此时vue实例中还没有data el methods等属性
+        beforeCreate: function () {
+            console.log('beforeCreate:' + this.number)
+        },
+
+        // 第二个hook 在这个函数执行时vue实例已经初始化了data属性 methods等相关方法
+        created: function () {
+            console.log('create:' + this.number)
+        },
+
+        // 该函数在执行时vue将el作为执行范围来进行模板编译,未进行渲染
+        beforeMount(){
+            console.log('beforeMount:' + document.getElementById('sp').innerText);
+
+        },
+        // 此函数在执行时已经将数据渲染到了页面并完成了页面数据的更新
+        mounted(){
+            console.log("mounted:" + document.getElementById('sp').innerText)
+        },
+
+        // 该函数是在数据被修改时执行 这个执行仅仅是vue实例中数据变化但页面显示的依旧是
+        // 原来的数据
+        beforeUpdate() {
+            console.log(111);
+            console.log("beforeUpdate:" + this.number)
+            console.log("beforeUpdate:" + document.getElementById('sp').innerText)
+        },
+
+        //更新完成后执行该函数
+        updated(){
+            console.log('updated:' + this.number)
+            console.log('updated:' + document.getElementById('sp').innerText)
+        },
+
+        // 该钩子函数在执行时 vue实例中的data
+        beforeDestroy() {
+            console.log('beforeDestory' + this.number)
+        }
+
+
+
+    })
+
+
+</script>
+</body>
+</html>

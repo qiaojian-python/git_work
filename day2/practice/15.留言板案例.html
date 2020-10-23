@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+<!--
+1展示留言板：
+a.将所有的数据绑定为vue的实例
+b.遍历vue的留言显示
+2.发表留言
+a.给发表留言的按钮添加事件
+b.获取用户在输入框输入的值
+c.添加留言板
+3.删除留言
+a.绑定时间
+b.通过事件传递确定要删除的行
+-->
+    <input type="text" v-model="msg">
+    <input type="button" value="发表留言" @click="add_note">
+    <ul>
+        <li v-for="(note,index) in notebook">
+            <span>{{note}}</span>
+            <a href="javascript:;" @click="del(index)">删除</a>
+        </li>
+    </ul>
+    <span>留言总数量:{{notebook.length}}</span> <br>
+
+    <input v-show="count" type="button" value="删除所有" @click="del_all()">
+</div>
+
+<script src="../js/vue.min.js"></script>
+<script>
+    new Vue({
+        el: "#app",
+        data: {
+            notebook:["lll","xxx"],
+            msg:'',
+            count: true,
+        },
+        methods: {
+            add_note(){
+                // 判断输入框是否有值
+                let msg = this.msg
+                if (msg){
+                    // this.notebook.push(this.msg)
+                    this.notebook.unshift(this.msg);
+                    this.msg = ""
+                }
+                this.s()
+
+            },
+            // 索引删除完更新
+            del(i){
+                this.notebook.splice(i,1)
+                this.s()
+            },
+            // 一次删所有
+            del_all(){
+                this.notebook = []
+                this.s()
+            },
+            s(){
+                if (this.notebook.length ==0){
+                    this.count = false
+                }else {
+                    this.count = true
+                }
+            }
+        }
+    })
+
+
+</script>
+</body>
+</html>

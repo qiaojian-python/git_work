@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+
+
+<!--    v-model只能应用于表单控件-->
+<!--    <input type="text" @click="changeValue" value="改变value">-->
+    <input type="text" v-model="message">
+    <p>{{message}}</p>
+
+</div>
+
+<script src="../js/vue.min.js"></script>
+<script>
+    new Vue({
+        el: "#app",
+        data: {
+            message:'',
+        }
+
+    })
+
+
+</script>
+</body>
+</html>

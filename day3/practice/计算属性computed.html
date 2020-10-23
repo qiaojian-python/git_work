@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+
+<!--    多个变量影响一个变量-->
+    十位：<input type="number" v-model="shi" max="9" min="0"> <br>
+    各位：<input type="number" v-model="ge" max="9" min="0"> <br>
+    结果:{{result}}
+
+</div>
+
+<script src="../js/vue.min.js"></script>
+<script>
+    new Vue({
+        el: "#app",
+        data: {
+            shi:'',
+            ge:'',
+        },
+        // computed 用来声明方法属性，不能在data中重复定义 ，渲染生效
+        computed:{
+            result() {
+                console.log(1);
+                return this.shi*10 + +this.ge;
+            }
+        }
+
+    })
+
+
+</script>
+</body>
+</html>

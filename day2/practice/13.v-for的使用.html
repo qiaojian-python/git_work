@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+<h3>{{user.name}} xxx {{user.age}} xxx {{user.pwd}}</h3>
+
+    <span v-for="(v,k,i) in user">
+        {{k}}:{{v}} --- {{i}}  <br>
+    </span>
+
+<!--    遍历数组-->
+<ul v-for="(c,i) in arr">
+    <li>{{i+1}}:{{c}}</li>
+</ul>
+
+    <br>
+<!--    遍历数组中的对象-->
+<!--    更新绑定key vue内部提供,提升速度等-->
+    <ul v-for="(v,i) in users" :key="i">
+        <li>{{i+1}}:{{v.name}}---{{v.age}}</li>
+    </ul>
+
+</div>
+
+<script src="../js/vue.min.js"></script>
+<script>
+    new Vue({
+        el: "#app",
+        data: {
+            user: {name:"小白",age:23,pwd:'444444'},
+            arr:['北','上','广'],
+            users: [{name:"小白",age:23,pwd:'444444'},
+            {name:"小黑",age:24,pwd:'444444'},
+            {name:"狗蛋",age:25,pwd:'444444'}]
+        }
+    })
+
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .red{
+            color: cyan;
+        }
+        .black{
+            color: yellow;
+        }
+    </style>
+</head>
+<body>
+<div id="app">
+{{}}
+    <com ttt="red" user="joe"></com>
+    <com ttt="black" user="Joe"></com>
+</div>
+
+<script src="../js/vue.min.js"></script>
+<script>
+
+    let com = {
+        template:`
+        <div>
+            <div :class="ttt">我的局部组件测试</div>
+            <span v-text="username"></span>
+        </div>
+        `,
+        data: function () {
+            return {
+                username:'小天',
+            }
+        },
+        //接收组件标签传递过来的参数，动态拥有属性
+        // 动态绑定props的数据， 相当于绑定data
+        props:['ttt','user'],
+
+        created:function () {
+            console.log(1);
+            console.log(this.username);
+            console.log(this.user,222)
+        }
+
+    }
+
+
+    new Vue({
+        el: "#app",
+        data: {},
+        components:{
+            'com':com,
+        },
+    })
+
+
+</script>
+</body>
+</html>

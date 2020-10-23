@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+
+<span @click="change" id="span" v-text="number">文本</span>
+</div>
+
+<script src="js/vue.min.js"></script>
+<script>
+    // 在这一步创建vue实例，     初始化 运行 销毁
+    // 初始化之前 数据赋值之前 数据赋值以后
+    new Vue({
+        el: "#app",
+        data: {
+            number: 50,
+        },
+        methods:{
+            change(){
+                this.number --;
+            }
+        },
+        // vue 第一个hook  该hook函数在执行时vue实例仅完成了自身事件的绑定
+        // 以及生命周期初始化的工作
+        // vue 实例中没有data el methods等属性
+        beforeCreate:function () {
+            console.log(this.number);
+        },
+
+    //    2 第二个hook 有data el methods等属性
+        created(){
+            console.log(this.number);
+        },
+
+        //3 第三个hook 在执行时vue将 el作为执行范围进行模板编译
+        beforeMount(){
+            console.log("beforeMount"+document.getElementById('span').innerText);
+        },
+        // 4 在执行时已经将数据渲染到了页面并完成了页面数据的更新
+        mounted(){
+            console.log("mounted"+document.getElementById('span').innerText);
+        },
+        // 5 data数据被修改未渲染执行
+        beforeUpdate(){
+            console.log('beforeUpdate:'+ this.number)
+            console.log('beforeUpdate:'+ document.getElementById('span').innerText)
+        },
+        // 6 页面更新完成
+        updated(){
+            console.log('beforeUpdate:'+ this.number)
+            console.log('beforeUpdate:'+ document.getElementById('span').innerText)
+
+        },
+        //7 data methods没有被销毁
+        beforeDestroy(){
+
+        },
+        // 8 此函数执行时， vue实例已经销毁
+        destroyed(){
+
+        }
+
+    })
+
+
+</script>
+</body>
+</html>

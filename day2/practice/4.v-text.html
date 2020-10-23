@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+<!--   v-text的值覆盖span内的值-->
+    <span>{{ msg }},2222</span>
+    <hr>
+    <span v-text="msg">1111</span>
+
+</div>
+
+
+
+<script src="../js/vue.min.js"></script>
+<script>
+    new Vue({
+        el:"#app",
+        data:{
+            msg:'hello world',
+        },
+    })
+</script>
+</body>
+
+</html>

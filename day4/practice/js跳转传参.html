@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+123
+    <router-view></router-view>
+
+</div>
+
+<script src="../js/vue.min.js"></script>
+<script src="https://unpkg.com/vue-router/dist/vue-router.js"></script>
+<script>
+     let first = {
+        template:`
+        <div>
+         组件1
+         <br>
+         <button @click="btn">按钮</button>
+        </div>
+        `,
+         methods:{
+            btn(){
+                this.$router.push('/second/1231231234123123')
+            }
+         }
+    }
+
+    let second = {
+        template:`
+        <div>
+         学生管理
+         <br>
+         {{ $route.params.id }}
+        </div>
+        `,
+    }
+
+    let myRouter = new VueRouter({
+        routes: [
+            {path:'/first', component: first},
+            {path:'/second/:id', component: second},
+            {path:'/', redirect: '/first'},
+
+        ]
+    })
+
+
+    new Vue({
+        el: "#app",
+        data: {},
+        router : myRouter,
+    })
+
+
+</script>
+</body>
+</html>

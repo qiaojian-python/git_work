@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<!-- 动态路由传参，将参数作为路由的一部分 -->
+<div id="app">
+
+    组件展示：
+    <br>
+<router-view></router-view>
+
+</div>
+
+<script src="js/vue.min.js"></script>
+<script src="https://unpkg.com/vue-router/dist/vue-router.js"></script>
+<script>
+
+    // 组件1 跳转组件2 向组件2动态路由传参
+    let first = {
+        template:`
+        <div>
+        这是组件1
+
+        <router-link to="/second/1/tom">访问组件2</router-link>
+</div>
+        `
+    }
+    let second = {
+        template: `
+        <div>
+        这是组件2：接收组件1传递的id --> :{{$route.params.id}}
+        <br>
+        接收组件1传递的name --> :{{$route.params.name}}
+</div>
+        `,
+    }
+    // 将组件与路由绑定
+    let myRouter = new VueRouter({
+        routes: [
+            {path:'/first',component:first},
+            {path:'/second/:id/:name',component:second},
+            {path:'/',redirect:'first'},
+        ]
+    })
+
+    // 注册路由
+    new Vue({
+        el: "#app",
+        data: {},
+        router: myRouter,
+
+    })
+
+
+</script>
+</body>
+</html>

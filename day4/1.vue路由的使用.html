@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+<h3>这是主页的页头</h3>
+    <hr>
+
+    <router-link to="/first">访问系统首页</router-link>
+    <router-link to="/second">访问用户页</router-link>
+<!--    组件显示的位置-->
+    <router-view></router-view>
+
+
+</div>
+
+<script src="js/vue.min.js"></script>
+<script src="https://unpkg.com/vue-router/dist/vue-router.js"></script>
+<script>
+
+    let first = {
+        template:`
+    <div>百知教育系统
+
+
+    </div>
+        `,
+    }
+
+    let second = {
+        template: `
+        <div>11111
+
+        </div>
+        `,
+    }
+
+    //将定义好的路由注入到当前vue实例中
+    let myRouter = new VueRouter({
+        routes:[
+            {path:'/first',component: first},
+            {path:'/second',component: second},
+            {path:'/',component: first},
+        ]
+    })
+
+    new Vue({
+        el: "#app",
+        data: {},
+        // 注入定义好的vue路由
+        // 通过router配置参数注入
+        router: myRouter
+    })
+
+
+</script>
+</body>
+</html>

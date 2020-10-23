@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+
+<p @click="clickMe">{{num}}</p>
+<p>十位:{{shi}}</p>
+<p>个位:{{ge}}</p>
+
+</div>
+
+<script src="js/vue.min.js"></script>
+<script>
+    new Vue({
+        el: "#app",
+        data: {
+            num:99,
+            shi:'',
+            ge: '',
+        },
+        methods: {
+            clickMe(){
+                this.num -= 3;
+            }
+        },
+    //    监听watch,在其中写data同名的方法
+        watch:{
+            //代表监听的是data中num变量
+            num(){
+                this.shi = parseInt(this.num / 10);
+                this.ge = this.num % 10;
+            }
+        }
+
+    })
+
+
+</script>
+</body>
+</html>

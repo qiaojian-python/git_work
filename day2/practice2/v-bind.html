@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .aa{
+            border: 4px solid lightblue;
+        }
+    </style>
+</head>
+<body>
+<!-- v-bind 用来绑定标签的属性从而可以通过vue的实例来动态的修改标签的属性 -->
+<div id="app">
+<!-- 直接简化版 -->
+    <img :src="src" :title="title" :class="{aa: showCss}">
+    <input type="button" value="改变图片的样式" @click="addCss">
+    <input type="button" value="切换图片" @click="changeImg">
+</div>
+
+<script src="../js/vue.min.js"></script>
+<script>
+    new Vue({
+        el: "#app",
+        data: {
+            title:'暹罗猫',
+            showCss:false,
+            src:'https://dss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=3206781437,2892852957&fm=26&gp=0.jpg'
+        },
+        methods: {
+            addCss(){
+                this.showCss = !this.showCss
+            },
+            changeImg(){
+                this.src = "https://dss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=3974918960,1995934961&fm=26&gp=0.jpg"
+            }
+        }
+    })
+
+
+</script>
+</body>
+</html>

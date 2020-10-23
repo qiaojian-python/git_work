@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+
+
+</div>
+
+<script src="js/vue.min.js"></script>
+<script>
+    let user = {
+        username:"小白",
+        app:function () {
+            console.log(this.username);
+        }
+    }
+    user.app()
+
+    let student = {
+        username:"小白",
+        app:function () {
+            //回调函数的this指向window
+            setTimeout(function () {
+                console.log(this.username);
+            })
+        }
+    }
+    student.app()
+
+    let emp = {
+        username:'狗蛋',
+        app:function () {
+        //    在回调函数中使用箭头函数不使用
+            setTimeout(() =>{
+                console.log(this.username);
+            } )
+        }
+    }
+    emp.app()
+    new Vue({
+        el: "#app",
+        data: {}
+    })
+
+
+</script>
+</body>
+</html>

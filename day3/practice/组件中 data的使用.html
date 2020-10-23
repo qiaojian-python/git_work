@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+vue中的username：{{ username }}
+    <br>
+
+    <first></first>
+    <first></first>
+</div>
+
+<script src="../js/vue.min.js"></script>
+<script>
+
+    // 组件就是普通的js对象 ,除了
+    let first = {
+        template:`
+        <div>
+            这是一个组件
+            <br>
+            <span @click="change"> 这是组件的span,{{username}}</span>
+        </div>
+        `,
+        // 组件中data对于的值的函数
+        data: function () {
+            return {
+                username:'小天'
+            }
+        },
+        methods:{
+            change(){
+                alert('1111')
+            }
+        }
+    }
+    Vue.component('first',first)
+    new Vue({
+        el: "#app",
+        data: {
+            username:'小白',
+
+        }
+    })
+
+
+</script>
+</body>
+</html>

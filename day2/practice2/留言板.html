@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+<!-- 第一步，展示留言板 -->
+    <input type="text" v-model="msg">
+    <input type="button" value="发表留言" @click="add_note">
+    <ul>
+        <li v-for="(n,i) in notebook">
+            <span>{{n}}</span>
+            <a href="javascript:;" @click="del(i)">删除</a>
+        </li>
+    </ul>
+    <span>留言总数量:{{notebook.length}}</span> <br>
+    <input v-show="count" type="button" value="删除所有" @click="del_all">
+
+</div>
+
+<script src="../js/vue.min.js"></script>
+<script>
+    new Vue({
+        el: "#app",
+        data: {
+            msg:'',
+            notebook:['第一条','第二条'],
+            count:true,
+        },
+        methods:{
+            add_note(){
+                let msg = this.msg
+                if (msg){
+                    this.notebook.unshift(msg);
+                    this.msg = ''
+                }
+                this.s()
+            },
+            del(i) {
+                this.notebook.splice(i,1)
+                this.s()
+            },
+        //    删除所有
+            del_all(){
+                this.notebook = []
+                this.s()
+            },
+        //    更新按钮
+            s(){
+                if (this.notebook.length == 0) {
+                    this.count = false
+                }else {
+                    this.count = true
+                }
+            }
+        }
+    })
+
+
+</script>
+</body>
+</html>

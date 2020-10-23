@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+父组件的username:{{username}}
+    <hr>
+<com @btn="ttt"></com>
+
+</div>
+
+<script src="js/vue.min.js"></script>
+<script>
+
+    let com = {
+        template:`
+        <div>
+        子组件向父组件传递
+        <br>
+        <button @click="clickme">事件触发按钮</button>
+
+</div>
+
+        `,
+        methods: {
+            clickme(){
+                this.$emit('btn','小哥')
+            }
+        }
+    }
+
+
+
+    new Vue({
+        el: "#app",
+        data: {
+            username:'小天',
+
+        },
+        methods:{
+            ttt(t){
+                console.log(t);
+                this.username = t
+            }
+
+        },
+        components:{
+            com:com,
+        }
+    })
+
+
+</script>
+</body>
+</html>

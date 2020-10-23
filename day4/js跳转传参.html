@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<!-- js跳转传参 -->
+<div id="app">
+
+    组件展示
+<router-view></router-view>
+
+</div>
+
+<script src="js/vue.min.js"></script>
+<script src="https://unpkg.com/vue-router/dist/vue-router.js"></script>
+<script>
+    let com = {
+        template:`
+        <div>
+        组件1 <br>
+        <button @click="goPage">跳转到组件2并传参</button>
+</div>
+        `,
+        methods:{
+            goPage(){
+                this.$router.push('/com2/5')
+                // this.$router.push('/com2?id=5')
+            }
+        }
+    }
+
+    let com2 = {
+        template:`
+        <div>
+        组件2: 接收组件1传递的参数 --> {{ $route.query.id }}
+        <br>
+        接收组件1传递的动态路由参数 --> {{ $route.params.id }}
+        <br>
+        当前路由路径信息： {{ $route.path }}
+</div>
+        `,
+    }
+
+    let myRouter = new VueRouter({
+        routes: [
+            {path:'/com',component:com},
+            // {path:'/com2',component:com2},
+            {path:'/com2/:id',component:com2},
+            {path:'/',redirect:'/com'},
+        ]
+    })
+
+    new Vue({
+        el: "#app",
+        data: {},
+        router: myRouter,
+
+    })
+
+
+</script>
+</body>
+</html>

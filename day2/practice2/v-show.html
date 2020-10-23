@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+<h3 v-show="false">{{msg}}</h3>
+    <hr>
+    <span v-show="count>=30">百知教育,{{msg}}</span> <br>
+    <input type="button" value="点我+" @click="add">
+    <input type="button" value="点我-" @click="reduce">
+</div>
+
+<script src="../js/vue.min.js"></script>
+<script>
+    new Vue({
+        el: "#app",
+        data: {
+            msg:'123',
+            count:30,
+        },
+        methods:{
+            add(){
+                this.count ++;
+            },
+            reduce(){
+                this.count --;
+            }
+        }
+    })
+
+
+</script>
+</body>
+</html>

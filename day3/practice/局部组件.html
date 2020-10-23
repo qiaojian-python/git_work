@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+
+<second></second>
+</div>
+
+<script src="../js/vue.min.js"></script>
+<script>
+    let second = {
+        template:`
+        <div>局部组件</div>
+        `,
+    }
+
+    // 全局注册
+    // Vue.component('second',second)
+
+
+    // 在Vue中局部注册,只在此实例范围内使用
+    new Vue({
+        el: "#app",
+        data: {},
+        components: {
+            'second':second
+        }
+    })
+
+
+</script>
+</body>
+</html>

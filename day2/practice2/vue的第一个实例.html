@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<!--<div id="app" class="c">-->
+<div id="app" >
+{{ msg }}
+
+    <h2>{{username}}</h2>
+
+</div>
+
+<div class="c">
+    <h1>{{username}}</h1>
+</div>
+<!-- vue js的引入-->
+<!--<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>-->
+<script src="../js/vue.min.js"></script>
+<script>
+    new Vue({
+        el: "#app",
+        data: {
+            msg:'2006',
+            username:"joe"
+        },
+    })
+    new Vue({
+        el: ".c",
+        data: {
+            username: 'Joe'
+        }
+    })
+
+</script>
+</body>
+</html>

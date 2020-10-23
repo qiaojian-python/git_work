@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<!-- v-text -->
+<div id="app">
+
+<span>{{msg}},xxxxx</span>
+    <hr>
+<!--    覆盖-->
+    <span v-text="msg">yyyyy</span>
+</div>
+
+<!-- v-html -->
+<div id="c">
+{{msg}}
+    <br>
+    <span v-html="msg">123</span>
+</div>
+
+<script src="../js/vue.min.js"></script>
+<script>
+    new Vue({
+        el: "#app",
+        data: {
+            msg:"tttttt",
+        }
+    });
+
+    new Vue({
+        el: "#c",
+        data: {
+            // msg:" <a href=\"www.baidu.com\">百度</a>"
+            msg:"<h1>这是一级标题</h1>"
+        }
+    })
+</script>
+</body>
+</html>

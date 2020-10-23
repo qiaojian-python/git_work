@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+
+<p @click="low_num">{{num}}</p>
+<p>{{parseInt(num/10)}}</p>
+<p>{{num % 10}}</p>
+
+    <hr>
+    <input type="number" v-model="shi" max="9" min="0">
+    <input type="number" v-model="ge" max="9" min="0">
+<!--    结果: <b>{{shi *10 + +ge}}</b>-->
+    结果: <b>{{result}}</b>
+
+</div>
+
+<script src="js/vue.min.js"></script>
+<script>
+    new Vue({
+        el: "#app",
+        data: {
+            num: 33,
+            shi:'',
+            ge:''
+        },
+        methods: {
+            low_num(){
+                this.num--;
+            },
+        },
+    //    用来声明方法属性
+        computed:{
+            result(){
+                return this.shi*10 + +this.ge
+            }
+        }
+    })
+
+
+</script>
+</body>
+</html>

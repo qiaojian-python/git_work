@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .aa{
+            border: 3px solid red;
+        }
+    </style>
+</head>
+<body>
+<div id="app">
+<!--    <img class="aa" title="暹罗猫" src="https://dss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=3974918960,1995934961&fm=26&gp=0.jpg" alt="">-->
+<!--    <img v-bind:src="src" v-bind:title="title" v-bind:class="{aa: showCss}">-->
+    <img :src="src" :title="title" :class="{aa: showCss}">
+    <input type="button" value="修改样式" @click="change_style">
+</div>
+
+<script src="../js/vue.min.js"></script>
+<script>
+    new Vue({
+        el: "#app",
+        data: {
+            title:"暹罗猫",
+            showCss: true,
+            src: "https://dss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=3974918960,1995934961&fm=26&gp=0.jpg"
+
+        },
+        methods: {
+            change_style(){
+                this.showCss = !this.showCss
+            }
+        }
+    })
+
+
+</script>
+</body>
+</html>

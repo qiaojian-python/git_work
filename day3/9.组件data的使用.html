@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+<first></first>
+
+v:{{username}}
+
+</div>
+
+<script src="js/vue.min.js"></script>
+<script>
+
+    let first = {
+        template:`
+        <div>xxx
+        <span>这是组件的span,{{username}}</span>
+        </div>
+        `,
+        // 组件中data定义是函数 不允许箭头函数
+        data: function () {
+            return {
+                username: '小黑',
+            }
+        }
+    }
+    Vue.component('first',first)
+
+    new Vue({
+        el: "#app",
+        data: {
+            username:'小天'
+        }
+    })
+
+
+</script>
+</body>
+</html>

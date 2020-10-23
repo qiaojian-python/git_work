@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+<!-- 标签元素值与data数据保持一致 -->
+    <input type="text" v-model="msg">
+    <p>{{msg}}</p>
+    
+</div>
+
+<script src="../js/vue.min.js"></script>
+<script>
+    new Vue({
+        el: "#app",
+        data: {
+            msg:'',
+        },
+
+    })
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+
+    <ul v-for="(v,i) in users" :key="i">
+        <li>{{i+1}}:{{v.name}}---{{v.age}}</li>
+    </ul>
+</div>
+
+<script src="../js/vue.min.js"></script>
+<script>
+    new Vue({
+        el: "#app",
+        data: {
+            users:[
+                {name:"小白",age:23,pwd:'555555'},
+                {name:"小黑",age:33,pwd:'444444'},
+                {name:"小红",age:43,pwd:'666666'},
+            ]
+        }
+    })
+
+
+</script>
+</body>
+</html>

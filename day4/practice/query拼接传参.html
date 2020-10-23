@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+111
+<router-view></router-view>
+
+
+</div>
+
+<script src="../js/vue.min.js"></script>
+<script src="https://unpkg.com/vue-router/dist/vue-router.js"></script>
+<script>
+
+    let com = {
+        template:`
+            <div>
+             组件1
+        <br>
+        <router-link to="/com2?id=5">向组件2传递参数 </router-link>
+</div>
+        `,
+
+    }
+
+        let com2 = {
+        template:`
+            <div>
+             组件2
+             <br>
+             接收组件2传递的参数  {{ $route.query.id }}
+             <br>
+             路径 {{ $route.path }}
+        <br>
+</div>
+        `,
+
+    }
+
+    let myRouter = new VueRouter({
+        routes :[
+            {path:'/com',component:com},
+            {path:'/com2',component:com2},
+            {path:'/',redirect:'/com'},
+        ]
+    })
+
+    new Vue({
+        el: "#app",
+        data: {},
+        router :myRouter
+    })
+
+
+</script>
+</body>
+</html>
