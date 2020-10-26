@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+<first></first>
+    <hr>
+    <second></second>
+</div>
+
+<script src="js/vue.min.js"></script>
+<script src="js/vuex.3.0.1.js"></script>
+<script>
+
+    let first = {
+        template:`
+        <div>
+        这是一个组件
+        <button @click="add">点击数字增加</button>
+        </div>
+        `,
+        methods:{
+            add(){
+                //在函数中向状态机提交一个变化 动作
+                this.$store.commit('num_add')
+            }
+        }
+    }
+    let second = {
+        template: `
+        <div>
+        这是第二个组件
+        <span>点击组件1的按钮，让组件2的数字发生变化{{$store.state.number}}</span>
+        </div>
+        `,
+    }
+
+    // 创建状态机 初始化状态以及行为
+    let myStore = new Vuex.Store({
+        state: {
+            number: 3,
+        },
+        mutations: {
+            num_add:function (state) {
+                // 在动作中可以对共享的数据做限制
+                if (state.number < 10){
+                    state.number ++
+                }
+
+            }
+        }
+    })
+
+    new Vue({
+        el: "#app",
+        data: {},
+        components: {
+            first:first,
+            second,second
+        },
+        // 注入状态机
+        store: myStore,
+    })
+
+
+</script>
+</body>
+</html>

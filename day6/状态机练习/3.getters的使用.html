@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+
+<first></first>
+    <hr>
+    <second></second>
+
+</div>
+
+<script src="js/vue.min.js"></script>
+<script src="js/vuex.3.0.1.js"></script>
+<script>
+
+    let first = {
+        template: `
+        <div>
+        这是一个组件
+        <button @click="clickMe">按钮</button>
+        </div>
+        `,
+        methods: {
+            clickMe(){
+                this.$store.commit('add_count');
+            },
+        }
+
+    }
+
+    let second = {
+        template: `
+        <div>
+        这是第二个组件  {{ $store.state.count }}
+        <br>
+        <span>获取count的相反数:{{ $store.getters.change_count }}</span>
+        </div>
+
+        `,
+
+
+    }
+
+    // 状态机
+    let myStore = new Vuex.Store({
+        state:{
+            count: 1,
+        },
+        // 动作
+        mutations: {
+            add_count(state){
+                state.count++;
+            }
+        },
+
+        getters:{
+            // 返回count的相反数
+            change_count(state){
+                return 0 -state.count
+            }
+        }
+
+    })
+
+    new Vue({
+        el: "#app",
+        data: {},
+        components:{
+            first:first,
+            second:second,
+        },
+        store:myStore,
+    })
+
+
+</script>
+</body>
+</html>

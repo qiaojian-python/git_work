@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+
+<first></first>
+    <hr>
+    <second></second>
+
+</div>
+
+<script src="../js/vue.min.js"></script>
+<script src="../js/vuex.3.0.1.js"></script>
+
+<script>
+    let first = {
+        template:`
+        <div>
+        这是一个组件
+        <br>
+         展示的对象---> {{ $store.state.user }}
+         <br>
+        <button @click="clickMe">按钮</button>
+        </div>>
+        `,
+        methods: {
+            clickMe(){
+                this.$store.commit('editUser',['小李','00000'])
+            },
+        },
+    }
+
+    let second = {
+        template: `
+        <div>
+        组件2
+        展示的对象---> {{ $store.state.user }}
+        </div>
+        `,
+        data: function () {
+            return {
+                // user:{username:'小黑',age:19,password:'123456'}
+            }
+        },
+
+    }
+
+    let myStore = new Vuex.Store({
+        //存放共享的数据
+        state:{
+            user:{username:'小黑',age:19,password:'123456'},
+        },
+        // 行为
+        mutations: {
+            editUser(state,l){
+                console.log(l);
+                state.user.username = l[0]
+                state.user.password = l[1]
+            }
+        }
+    })
+
+    new Vue({
+        el: "#app",
+        data: {},
+        components:{
+            first:first,
+            second:second,
+        },
+        store:myStore,
+    })
+
+
+</script>
+</body>
+</html>
