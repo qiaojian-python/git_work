@@ -130,6 +130,7 @@ class BookModelSerializerV2(serializers.ModelSerializer):
         return value
 
 
+
 # 作业序列化器
 class UserModelSerializer(serializers.ModelSerializer):
 
@@ -183,6 +184,10 @@ class UserModelSerializer(serializers.ModelSerializer):
             "id":{
                 "read_only":True
             },
+            # "re_pwd": {
+            #     "required": False,
+            #     "write_only": True
+            # },
 
 
 
@@ -190,7 +195,7 @@ class UserModelSerializer(serializers.ModelSerializer):
 #         钩子函数同样可以用
     def validate(self, attrs):
         # 验证两次密码是否一致
-        print(attrs,111)
+        # print(attrs,111)
         # pwd = attrs.get("password")
         # re_pwd = attrs.pop("re_pwd")
         #

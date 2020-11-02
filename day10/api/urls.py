@@ -28,7 +28,7 @@ urlpatterns = [
     path('userset/login/', views.UserViewSetView.as_view({'post': 'user_login'})),
     path('userset/regist/', views.UserViewSetView.as_view({'post': 'user_regist'})),
     path('userset/<str:id>/', views.UserViewSetView.as_view({'get': "get_user_count"})),
-
+# 两个类视图解决post冲突 regist分离
 ]
 
 
